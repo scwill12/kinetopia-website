@@ -1,0 +1,8 @@
+# Kinetopia
+# https://kinetopia.org
+
+User-agent: *
+Allow: /
+Disallow:
+
+Sitemap: https://kinetopia.org/sitemap.xml

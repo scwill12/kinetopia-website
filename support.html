@@ -3,10 +3,152 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-<title>Support — Kinetopia</title>
-<meta name="description" content="Help, FAQ, and contact for Kinetopia — the one-time-purchase iOS fitness tracker by Cole Williams." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+
+<title>Kinetopia Support · FAQ for the Offline Fitness Tracker · Help &amp; Contact</title>
+<meta name="description" content="Help, FAQ, and contact for Kinetopia — the one-time-purchase iOS fitness tracker. Answers about Apple Watch, Apple Health, iCloud sync, tennis and pickleball tracking, GPX export, and troubleshooting." />
+<meta name="keywords" content="Kinetopia support, Kinetopia FAQ, offline fitness tracker help, no subscription fitness app help, Apple Watch fitness app, Apple Health sync, GPX export, tennis tracker support, pickleball tracker support" />
+<meta name="author" content="Cole Williams" />
+<link rel="canonical" href="https://kinetopia.org/support.html" />
+
+<!-- Open Graph -->
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Kinetopia" />
+<meta property="og:title" content="Kinetopia Support · FAQ" />
+<meta property="og:description" content="Help and FAQ for Kinetopia — the offline, no-subscription fitness tracker for iPhone and Apple Watch." />
+<meta property="og:url" content="https://kinetopia.org/support.html" />
+<meta property="og:image" content="https://kinetopia.org/og.png" />
+<meta property="og:locale" content="en_US" />
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Kinetopia Support" />
+<meta name="twitter:description" content="Help, FAQ, and contact for Kinetopia." />
+<meta name="twitter:image" content="https://kinetopia.org/og.png" />
+
 <meta name="theme-color" content="#F8F8F3" />
 <link rel="stylesheet" href="styles.css" />
+
+<!-- ============ Structured data ============ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://kinetopia.org/" },
+    { "@type": "ListItem", "position": 2, "name": "Support", "item": "https://kinetopia.org/support.html" }
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How do I record my first activity?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Open the app, tap the Record tab, tap the sport row at the top to pick what you're doing, then tap Start. Kinetopia begins timing immediately. For GPS sports (run, ride, hike, etc.) make sure you've allowed location access on first launch." }
+    },
+    {
+      "@type": "Question",
+      "name": "Why can't I see a map during my workout?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Three possibilities: (1) the sport you chose doesn't use GPS — strength, yoga, swim, tennis, pickleball, and scuba intentionally don't show a map; (2) you haven't granted location permission yet; (3) you're indoors with no satellite lock — give it a minute outside." }
+    },
+    {
+      "@type": "Question",
+      "name": "Is Kinetopia really a one-time purchase?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. $14.99 once. There is no monthly tier, no annual upgrade, no Premium version. The version you buy is the version with every feature, forever." }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I restore my purchase on a new phone?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Install Kinetopia from the App Store using the same Apple ID you bought it with. The app will detect your prior purchase automatically. If something looks wrong, email support@kinetopia.org." }
+    },
+    {
+      "@type": "Question",
+      "name": "Does Family Sharing work with Kinetopia?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. If you enabled Family Sharing for Kinetopia in your App Store settings, every family member can install it without paying again." }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I get a refund?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Refunds go through Apple. Visit reportaproblem.apple.com, find Kinetopia in your purchase history, and request a refund there. Apple usually approves them within a few days." }
+    },
+    {
+      "@type": "Question",
+      "name": "Where do I get the Apple Watch app?",
+      "acceptedAnswer": { "@type": "Answer", "text": "The watch app ships inside the iPhone app. After you install Kinetopia on your iPhone, open the Watch app on your phone, go to My Watch, scroll to Available Apps, and tap Install next to Kinetopia. On most devices, it installs automatically." }
+    },
+    {
+      "@type": "Question",
+      "name": "Will the Apple Watch app work without my phone?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes for recording. The watch buffers GPS, heart rate, and other metrics locally during the workout. When you finish, the workout is sent to your phone the next time the two are in Bluetooth range." }
+    },
+    {
+      "@type": "Question",
+      "name": "Why is my watch heart rate missing?",
+      "acceptedAnswer": { "@type": "Answer", "text": "The watch app uses HKLiveWorkoutBuilder, the same Apple framework as the built-in Workout app. If HR doesn't show up: make sure the watch is snug, verify HealthKit permissions in Watch app → Privacy → Health, and confirm Heart Rate is enabled in the Health app on iPhone." }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I connect Apple Health?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Go to You → Settings → Apple Health → Connect. You'll see Apple's permission sheet. Tap Turn On All for the cleanest experience, or pick exactly what you want to share." }
+    },
+    {
+      "@type": "Question",
+      "name": "What does Apple Health sync include?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Two-way. Kinetopia writes every completed workout, with active energy, distance, and the GPS route as HKWorkoutRoute. Kinetopia reads existing workouts from any source (Apple Fitness, third-party apps), plus weight, height, and resting heart rate." }
+    },
+    {
+      "@type": "Question",
+      "name": "Will I get duplicate workouts?",
+      "acceptedAnswer": { "@type": "Answer", "text": "No. Kinetopia deduplicates by Apple Health's stable workout UUID. The same workout imported twice will be matched and skipped on the second pass." }
+    },
+    {
+      "@type": "Question",
+      "name": "What does iCloud sync actually do?",
+      "acceptedAnswer": { "@type": "Answer", "text": "It syncs your Kinetopia activities, gear, goals, and personal records across all your Apple devices signed into the same iCloud account. The sync uses your own private CloudKit database — never our servers, never a third party. It's off by default." }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I turn on iCloud sync?",
+      "acceptedAnswer": { "@type": "Answer", "text": "You → Settings → iCloud sync, flip the toggle, then quit and reopen the app. SwiftData configures the CloudKit container when the app launches, so the change takes effect on relaunch." }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I use Kinetopia without iCloud?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes — that's the default. With iCloud off, everything stays on the device. The app has no other syncing or backup mechanism, by design." }
+    },
+    {
+      "@type": "Question",
+      "name": "Why doesn't Kinetopia track distance for tennis?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Because nobody cares how far you walked on a tennis court. We track what actually matters: matches played, matches won, set scores, and an optional opponent name." }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I log a tennis or pickleball win mid-session?",
+      "acceptedAnswer": { "@type": "Answer", "text": "During recording, tap + Won match or + Lost match. There are also Set buttons for finer-grain tracking. Tap Undo last if you misclick. You can also fill it in after the fact on the save sheet." }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I export my data?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Open any activity, tap the menu in the top-right, choose Export GPX. The file follows the GPX 1.1 spec with the Garmin TrackPointExtension for heart rate. Every other fitness tool can read it." }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I delete all my data?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Uninstall the app. With iCloud sync off (the default), that wipes everything. If iCloud sync was on, Kinetopia's CloudKit data lives in your private iCloud database — delete it from Settings → [Your Name] → iCloud → Manage Storage → Kinetopia." }
+    },
+    {
+      "@type": "Question",
+      "name": "GPS distance looks too short or too long.",
+      "acceptedAnswer": { "@type": "Answer", "text": "Phone GPS is rough during the first 20-30 seconds of a recording. Kinetopia's accuracy gate drops fixes worse than 35m, which usually catches the early garbage. If you start indoors, the recording's distance will be light by however far you traveled before stepping outside." }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
