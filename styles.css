@@ -30,6 +30,37 @@
 
 * { box-sizing: border-box; }
 html, body { margin: 0; padding: 0; }
+
+/* ---------- Pre-launch announcement bar ---------- */
+.announcement {
+  position: relative;
+  background: linear-gradient(90deg, var(--forest) 0%, var(--forest-deep) 100%);
+  color: white;
+  padding: 11px 18px;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  z-index: 51;
+}
+.announcement a { color: white; text-decoration: underline; text-underline-offset: 2px; font-weight: 600; }
+.announcement a:hover { opacity: 0.85; }
+.announcement strong { font-weight: 700; }
+.announcement .spark {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.18);
+  color: white;
+  padding: 2px 9px;
+  border-radius: 999px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  margin-right: 8px;
+  vertical-align: 1px;
+}
+@media (max-width: 520px) {
+  .announcement { font-size: 12px; padding: 10px 14px; }
+}
 body {
   background: var(--cream);
   color: var(--ink);
@@ -121,6 +152,45 @@ h1 .accent { color: var(--forest); font-style: italic; font-weight: 700; }
   font-size: 15.5px; font-weight: 600;
 }
 .btn-ghost:hover { border-color: var(--forest); color: var(--forest); text-decoration: none; }
+
+/* Coming-soon variant of the primary button. Visually distinct from a live
+   download button, but still clickable — opens an "email me at launch" link. */
+.btn-coming-soon {
+  display: inline-flex; align-items: center; gap: 9px;
+  background: var(--ink);
+  color: white;
+  padding: 14px 22px; border-radius: 999px;
+  font-size: 15.5px; font-weight: 600;
+  position: relative;
+}
+.btn-coming-soon:hover { background: var(--forest-deep); text-decoration: none; }
+.btn-coming-soon .badge {
+  background: var(--warn);
+  color: #2a2200;
+  padding: 3px 9px;
+  border-radius: 999px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* The pre-launch nav CTA (top-right). Matches .cta layout but disabled feel. */
+nav.top .cta.coming-soon {
+  background: var(--ink);
+  color: white;
+  display: inline-flex; align-items: center; gap: 8px;
+}
+nav.top .cta.coming-soon:hover { background: var(--forest-deep); }
+nav.top .cta.coming-soon .dot {
+  width: 6px; height: 6px; border-radius: 50%; background: var(--warn);
+  display: inline-block;
+  animation: comingSoonPulse 2.4s ease-in-out infinite;
+}
+@keyframes comingSoonPulse {
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.15); }
+}
 
 .features-list { color: var(--ink-dim); font-size: 14px; margin-top: 18px; line-height: 1.9; }
 .features-list span { margin-right: 18px; }
