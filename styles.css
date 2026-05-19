@@ -379,6 +379,75 @@ h3 {
 .family .wordmarks { display: flex; flex-direction: column; gap: 12px; font-family: var(--serif); font-weight: 700; font-size: 38px; color: var(--ink); }
 .family .wordmarks .other { color: var(--ink-faint); }
 
+/* ---------- Caltopia phone mockup additions ---------- */
+.cal-hero { display: flex; justify-content: center; padding: 14px 0 6px; }
+.cal-ring {
+  width: 142px; height: 142px; border-radius: 50%;
+  background: conic-gradient(var(--forest) 0 62%, var(--cream-deep) 62% 100%);
+  display: grid; place-items: center;
+  position: relative;
+}
+.cal-ring::after {
+  content: ''; position: absolute; inset: 11px; background: white; border-radius: 50%;
+}
+.cal-ring-inner { position: relative; z-index: 1; text-align: center; font-family: var(--serif); }
+.cal-num { font-size: 32px; font-weight: 700; color: var(--ink); line-height: 1; }
+.cal-of { font-size: 11px; color: var(--ink-faint); font-family: var(--ui); font-weight: 600; margin-top: 4px; letter-spacing: 0.04em; }
+
+.cal-recent {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--hairline);
+}
+.cal-recent:last-child { border-bottom: none; }
+.cal-recent-name { font-family: var(--serif); font-size: 13px; font-weight: 600; color: var(--ink); }
+.cal-recent-cal { font-family: var(--ui); font-size: 12px; font-weight: 600; color: var(--ink-dim); }
+
+/* ---------- Duo cards (Caltopia + Kinetopia side-by-side) ---------- */
+.duo-row { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 36px; }
+@media (max-width: 800px) { .duo-row { grid-template-columns: 1fr; } }
+.duo-card {
+  background: white;
+  border: 1px solid var(--hairline);
+  border-radius: 22px;
+  padding: 28px;
+}
+.duo-card .duo-eyebrow {
+  font-family: var(--serif); font-weight: 700; font-size: 16px;
+  color: var(--forest);
+}
+.duo-card .duo-title {
+  font-family: var(--serif); font-weight: 700; font-size: 26px; color: var(--ink); margin: 4px 0 14px;
+}
+.duo-list { list-style: none; padding-left: 0; margin: 0; }
+.duo-list li {
+  padding: 6px 0;
+  font-size: 14.5px;
+  color: var(--ink-dim);
+  display: flex; gap: 8px; align-items: flex-start;
+}
+.duo-list li::before {
+  content: '✓';
+  color: var(--forest);
+  font-weight: 700;
+  flex: none;
+}
+
+/* ---------- "Made by" tag near hero ---------- */
+.made-by-tag {
+  display: inline-flex; align-items: center; gap: 7px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(20, 80, 43, 0.06);
+  color: var(--forest);
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  transition: background 120ms ease;
+}
+.made-by-tag:hover { background: rgba(20, 80, 43, 0.12); text-decoration: none; }
+.made-by-tag .arrow { font-size: 10px; opacity: 0.65; }
+
 /* ---------- Footer ---------- */
 footer { padding: 48px 0; border-top: 1px solid var(--hairline); font-size: 13px; color: var(--ink-faint); }
 footer .row { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
