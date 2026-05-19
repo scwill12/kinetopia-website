@@ -8,374 +8,19 @@
 <meta name="theme-color" content="#F8F8F3" />
 <meta property="og:title" content="Kinetopia" />
 <meta property="og:description" content="Every feature a fitness tracker should have. None of the subscriptions, accounts, or third-party clouds. $14.99 once. Yours forever." />
-<style>
-  :root {
-    --cream: #F8F8F3;
-    --cream-deep: #F2F1EA;
-    --card: #FFFFFF;
-    --forest: #14502B;
-    --forest-deep: #0C381E;
-    --forest-soft: #DFEAE1;
-    --ink: #1D1F1D;
-    --ink-dim: #66686A;
-    --ink-faint: #9AA09A;
-    --hairline: #E0E1DA;
-    --lavender: #E8E2F8;
-    --lavender-ink: #5C4FA8;
-    --butter: #FAF1D4;
-    --butter-ink: #A68433;
-    --blush: #FAE0E1;
-    --blush-ink: #B25257;
-    --sage: #DDEDD9;
-    --sage-ink: #527F52;
-    --sky: #DCEAF7;
-    --sky-ink: #335EA0;
-    --warn: #DC9933;
-    --danger: #C84545;
-    --serif: ui-serif, "New York", "Iowan Old Style", "Charter", Cambria, Georgia, serif;
-    --ui: -apple-system, BlinkMacSystemFont, "SF Pro Text", Inter, system-ui, sans-serif;
-    --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
-  }
-  * { box-sizing: border-box; }
-  html, body { margin: 0; padding: 0; }
-  body {
-    background: var(--cream);
-    color: var(--ink);
-    font-family: var(--ui);
-    font-size: 17px;
-    line-height: 1.5;
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
-  }
-  ::selection { background: var(--forest-soft); color: var(--forest-deep); }
-  a { color: var(--forest); text-decoration: none; }
-  a:hover { text-decoration: underline; }
-  .container { max-width: 1140px; margin: 0 auto; padding: 0 24px; }
-
-  /* ---------- Nav ---------- */
-  nav.top {
-    position: sticky; top: 0; z-index: 50;
-    background: rgba(248, 248, 243, 0.85);
-    backdrop-filter: saturate(180%) blur(20px);
-    -webkit-backdrop-filter: saturate(180%) blur(20px);
-    border-bottom: 1px solid var(--hairline);
-  }
-  nav.top .inner { display: flex; align-items: center; padding: 14px 0; gap: 28px; }
-  nav.top .logo {
-    display: flex; align-items: center; gap: 9px;
-    font-family: var(--serif); font-weight: 700; font-size: 19px; color: var(--ink);
-  }
-  nav.top .logo .mark {
-    width: 28px; height: 28px; border-radius: 50%; background: var(--forest);
-    display: grid; place-items: center; color: white; font-family: var(--ui);
-  }
-  nav.top .links { display: flex; gap: 22px; margin-left: 8px; }
-  nav.top .links a { color: var(--ink-dim); font-size: 14px; font-weight: 500; }
-  nav.top .spacer { flex: 1; }
-  nav.top .cta {
-    background: var(--forest); color: white; padding: 9px 16px; border-radius: 999px;
-    font-size: 14px; font-weight: 600;
-  }
-  nav.top .cta:hover { background: var(--forest-deep); text-decoration: none; }
-  @media (max-width: 760px) { nav.top .links { display: none; } }
-
-  /* ---------- Hero ---------- */
-  .hero { padding: 56px 0 32px; }
-  .hero .grid { display: grid; grid-template-columns: 1.15fr 1fr; gap: 56px; align-items: center; }
-  @media (max-width: 900px) { .hero .grid { grid-template-columns: 1fr; gap: 32px; } }
-
-  .pill {
-    display: inline-flex; align-items: center; gap: 7px;
-    background: var(--forest-soft); color: var(--forest);
-    padding: 7px 14px; border-radius: 999px;
-    font-size: 13px; font-weight: 600;
-  }
-
-  h1 {
-    font-family: var(--serif); font-weight: 700; color: var(--ink);
-    font-size: clamp(40px, 6vw, 76px); line-height: 1.02; letter-spacing: -0.015em;
-    margin: 18px 0 22px;
-  }
-  h1 .accent { color: var(--forest); font-style: italic; font-weight: 700; }
-
-  .lede { font-size: 19px; color: var(--ink-dim); max-width: 580px; }
-  .lede .strike { color: var(--ink-faint); text-decoration: line-through; margin-right: 4px; }
-
-  .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px; }
-  .chip {
-    display: inline-flex; align-items: center; gap: 7px;
-    background: var(--forest-soft); color: var(--forest);
-    padding: 8px 14px; border-radius: 999px;
-    font-size: 13.5px; font-weight: 600;
-  }
-  .chip svg { flex: none; }
-
-  .cta-row { display: flex; gap: 12px; margin-top: 28px; flex-wrap: wrap; }
-  .btn-primary {
-    display: inline-flex; align-items: center; gap: 9px;
-    background: var(--forest); color: white;
-    padding: 14px 22px; border-radius: 999px;
-    font-size: 15.5px; font-weight: 600;
-  }
-  .btn-primary:hover { background: var(--forest-deep); text-decoration: none; }
-  .btn-ghost {
-    display: inline-flex; align-items: center; gap: 9px;
-    color: var(--ink); border: 1px solid var(--hairline);
-    background: white;
-    padding: 14px 22px; border-radius: 999px;
-    font-size: 15.5px; font-weight: 600;
-  }
-  .btn-ghost:hover { border-color: var(--forest); color: var(--forest); text-decoration: none; }
-
-  .features-list { color: var(--ink-dim); font-size: 14px; margin-top: 18px; line-height: 1.9; }
-  .features-list span { margin-right: 18px; }
-  .features-list .check { color: var(--forest); margin-right: 6px; }
-
-  /* ---------- Phone mockup ---------- */
-  .phone-wrap { display: flex; justify-content: center; }
-  .phone {
-    width: 320px; aspect-ratio: 360 / 740;
-    background: white;
-    border-radius: 46px;
-    border: 9px solid #1B1F1B;
-    box-shadow: 0 30px 60px -20px rgba(20, 80, 43, 0.15), 0 8px 20px rgba(0,0,0,0.06);
-    position: relative; overflow: hidden;
-  }
-  .phone .notch {
-    position: absolute; top: 12px; left: 50%; transform: translateX(-50%);
-    width: 100px; height: 26px; background: #1B1F1B; border-radius: 999px;
-  }
-  .phone .screen {
-    padding: 50px 22px 70px;
-    background: var(--cream);
-    height: 100%;
-    display: flex; flex-direction: column; gap: 12px;
-  }
-  .phone .h-today {
-    display: flex; justify-content: space-between; align-items: baseline;
-    font-family: var(--serif);
-  }
-  .phone .h-today .title { font-size: 28px; font-weight: 700; color: var(--ink); }
-  .phone .h-today .date { font-size: 14px; color: var(--ink-dim); font-style: italic; font-weight: 500; }
-
-  .phone .ring-card {
-    background: white; border: 1px solid var(--hairline); border-radius: 22px; padding: 16px;
-  }
-  .phone .ring-row { display: flex; align-items: center; gap: 14px; }
-  .ring {
-    width: 78px; height: 78px; flex: none;
-    border-radius: 50%;
-    background:
-      conic-gradient(var(--forest) 0 75%, var(--cream-deep) 75% 100%);
-    display: grid; place-items: center;
-    position: relative;
-  }
-  .ring::after {
-    content: ''; position: absolute; inset: 8px; background: white; border-radius: 50%;
-  }
-  .ring .inner { position: relative; z-index: 1; text-align: center; font-family: var(--serif); }
-  .ring .pct { font-weight: 700; font-size: 16px; color: var(--forest); }
-  .ring .lbl { font-family: var(--ui); font-size: 9px; color: var(--ink-faint); letter-spacing: 0.08em; text-transform: uppercase; margin-top: 2px; }
-
-  .phone .ring-col { display: flex; flex-direction: column; gap: 2px; flex: 1; }
-  .phone .ring-col .small { font-size: 10px; color: var(--ink-faint); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; }
-  .phone .ring-col .big { font-family: var(--serif); font-size: 38px; font-weight: 700; color: var(--ink); line-height: 1; }
-  .phone .ring-col .unit { font-size: 13px; color: var(--ink-dim); margin-left: 4px; font-weight: 600; }
-  .phone .ring-col .sub { font-size: 11px; color: var(--ink-faint); margin-top: 4px; }
-
-  .pillrow { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-top: 10px; }
-  .data-pill { border-radius: 14px; padding: 9px 11px; display: flex; flex-direction: column; gap: 3px; }
-  .data-pill.lavender { background: var(--lavender); color: var(--lavender-ink); }
-  .data-pill.butter { background: var(--butter); color: var(--butter-ink); }
-  .data-pill.blush { background: var(--blush); color: var(--blush-ink); }
-  .data-pill .label { font-size: 9px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.7; }
-  .data-pill .v { font-family: var(--serif); font-size: 16px; font-weight: 700; }
-
-  .activity-card {
-    background: white; border: 1px solid var(--hairline); border-radius: 22px; padding: 14px;
-  }
-  .ac-sec { font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 10px; }
-  .ac-row { display: flex; gap: 12px; align-items: flex-start; padding: 6px 0; }
-  .ac-row + .ac-row { border-top: 1px solid var(--hairline); margin-top: 4px; padding-top: 10px; }
-  .ac-icon { width: 34px; height: 34px; border-radius: 50%; background: var(--forest-soft); display: grid; place-items: center; color: var(--forest); flex: none; font-size: 16px; }
-  .ac-meta { flex: 1; }
-  .ac-meta .t { font-family: var(--serif); font-weight: 600; font-size: 14px; }
-  .ac-meta .d { font-size: 10px; color: var(--ink-faint); }
-  .ac-meta .s { display: flex; gap: 12px; margin-top: 4px; font-size: 11px; }
-  .ac-meta .s .col .v { font-family: var(--serif); font-weight: 600; font-size: 12px; color: var(--ink); }
-  .ac-meta .s .col .l { font-size: 8px; color: var(--ink-faint); letter-spacing: 0.06em; text-transform: uppercase; }
-
-  .tabbar { display: flex; justify-content: space-around; padding-top: 6px; border-top: 1px solid var(--hairline); margin-top: auto; }
-  .tabbar .t { font-size: 10px; color: var(--ink-faint); text-align: center; }
-  .tabbar .t.active { color: var(--forest); }
-  .tabbar .t .ic { font-size: 14px; margin-bottom: 1px; display: block; }
-
-  /* ---------- Sections ---------- */
-  section { padding: 80px 0; }
-  section.tight { padding: 56px 0; }
-  .section-lead { max-width: 720px; }
-  .section-eyebrow { font-size: 13px; font-weight: 600; color: var(--forest); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 14px; }
-  h2 {
-    font-family: var(--serif); font-weight: 700;
-    font-size: clamp(32px, 4vw, 50px); line-height: 1.05; letter-spacing: -0.01em;
-    color: var(--ink); margin: 0 0 18px;
-  }
-  h2 .accent { color: var(--forest); font-style: italic; font-weight: 700; }
-  h3 {
-    font-family: var(--serif); font-weight: 700;
-    font-size: 22px; color: var(--ink); margin: 0 0 8px;
-  }
-  .body { font-size: 17px; color: var(--ink-dim); }
-
-  /* ---------- Description band ---------- */
-  .band {
-    background: var(--cream-deep);
-    border-top: 1px solid var(--hairline); border-bottom: 1px solid var(--hairline);
-  }
-  .band .body-row {
-    display: grid; grid-template-columns: 1fr; max-width: 760px; margin: 0 auto;
-    font-family: var(--serif); font-size: 22px; line-height: 1.45; color: var(--ink); text-align: center;
-    padding: 36px 24px;
-  }
-
-  /* ---------- Compare ---------- */
-  .compare { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 18px; margin-top: 36px; }
-  @media (max-width: 800px) { .compare { grid-template-columns: 1fr; } }
-  .comp-card {
-    background: white; border: 1px solid var(--hairline); border-radius: 20px;
-    padding: 22px;
-    display: flex; flex-direction: column; gap: 10px;
-  }
-  .comp-card .name { font-family: var(--serif); font-size: 22px; font-weight: 700; }
-  .comp-card .price { font-family: var(--serif); font-size: 38px; font-weight: 700; }
-  .comp-card .price .small { font-size: 16px; color: var(--ink-dim); font-style: italic; font-weight: 500; }
-  .comp-card .strike { color: var(--ink-faint); text-decoration: line-through; font-size: 18px; font-weight: 600; margin-right: 6px; }
-  .comp-card.them .name, .comp-card.them .price { color: #1F2823; }
-  .comp-card.them { background: var(--cream-deep); }
-  .comp-card.us { background: var(--forest); color: white; }
-  .comp-card.us .name, .comp-card.us .price { color: white; }
-  .comp-card.us .price .small { color: rgba(255,255,255,0.7); }
-  .comp-card.us .strike { color: rgba(255,255,255,0.55); }
-  .comp-card ul { margin: 6px 0 0; padding: 0; list-style: none; font-size: 14px; color: var(--ink-dim); }
-  .comp-card.us ul { color: rgba(255,255,255,0.92); }
-  .comp-card li { padding: 4px 0; display: flex; align-items: center; gap: 8px; }
-  .comp-card li::before { content: '–'; font-weight: 700; color: var(--ink-faint); }
-  .comp-card.us li::before { content: '+'; color: rgba(255,255,255,0.7); }
-  .comp-card .badge {
-    position: absolute; top: 16px; right: 16px;
-    background: var(--warn); color: #2a2200;
-    padding: 4px 10px; border-radius: 999px;
-    font-size: 11px; font-weight: 700; letter-spacing: 0.04em;
-  }
-  .comp-card { position: relative; }
-
-  /* ---------- Features grid ---------- */
-  .feat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px 32px; margin-top: 48px; }
-  @media (max-width: 900px) { .feat-grid { grid-template-columns: 1fr 1fr; } }
-  @media (max-width: 600px) { .feat-grid { grid-template-columns: 1fr; } }
-  .feat .icn {
-    width: 38px; height: 38px; border-radius: 12px; background: var(--forest-soft); color: var(--forest);
-    display: grid; place-items: center; margin-bottom: 14px; font-size: 18px;
-  }
-  .feat .title { font-family: var(--serif); font-size: 18px; font-weight: 700; margin-bottom: 6px; color: var(--ink); }
-  .feat .desc { font-size: 14.5px; color: var(--ink-dim); line-height: 1.55; }
-
-  /* ---------- Sports grid ---------- */
-  .sports-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin-top: 36px; }
-  @media (max-width: 800px) { .sports-grid { grid-template-columns: repeat(3, 1fr); } }
-  @media (max-width: 500px) { .sports-grid { grid-template-columns: repeat(2, 1fr); } }
-  .sport-cell {
-    background: white; border: 1px solid var(--hairline); border-radius: 16px;
-    padding: 16px 10px; display: flex; flex-direction: column; align-items: center; gap: 8px;
-    font-size: 13px; font-weight: 600; color: var(--ink);
-  }
-  .sport-cell .badge {
-    width: 38px; height: 38px; border-radius: 50%; background: var(--forest-soft); color: var(--forest);
-    display: grid; place-items: center; font-size: 16px;
-  }
-
-  /* ---------- Watch section ---------- */
-  .watch-row { display: grid; grid-template-columns: 1fr 360px; gap: 56px; align-items: center; }
-  @media (max-width: 900px) { .watch-row { grid-template-columns: 1fr; } }
-  .watch-mock {
-    width: 240px;
-    aspect-ratio: 1 / 1.18;
-    background: #060708;
-    border-radius: 56px;
-    margin: 0 auto;
-    padding: 32px 22px;
-    box-shadow: 0 30px 60px -20px rgba(0,0,0,0.3);
-    color: white;
-    font-family: var(--serif);
-  }
-  .watch-mock .title { font-size: 17px; font-weight: 700; color: #4FB378; margin-bottom: 14px; }
-  .watch-mock .item {
-    background: rgba(255,255,255,0.08); border-radius: 14px;
-    padding: 9px 11px; margin-bottom: 7px;
-    display: flex; align-items: center; gap: 10px; font-family: var(--ui);
-    font-size: 13px; font-weight: 600;
-  }
-  .watch-mock .item .ic { color: #4FB378; }
-  .watch-mock .item .arr { margin-left: auto; color: #4FB378; opacity: 0.8; font-size: 11px; }
-
-  /* ---------- Court sports section ---------- */
-  .court-card {
-    background: white; border: 1px solid var(--hairline); border-radius: 26px;
-    padding: 28px;
-  }
-  .court-row { display: grid; grid-template-columns: 1fr 220px; gap: 32px; align-items: center; }
-  @media (max-width: 700px) { .court-row { grid-template-columns: 1fr; } }
-  .wl-display { display: flex; align-items: baseline; gap: 8px; font-family: var(--serif); }
-  .wl-display .w { font-size: 64px; font-weight: 700; color: var(--forest); }
-  .wl-display .dash { font-size: 44px; color: var(--ink-faint); font-weight: 300; }
-  .wl-display .l { font-size: 64px; font-weight: 700; color: var(--blush-ink); }
-  .wl-sub { color: var(--ink-dim); font-size: 14px; font-weight: 600; margin-top: 4px; }
-  .scoreline { font-family: var(--mono); font-size: 16px; font-weight: 700; color: var(--ink); }
-
-  /* ---------- Privacy section ---------- */
-  .privacy-card {
-    background: white; border: 1px solid var(--hairline); border-radius: 28px;
-    padding: 44px;
-    text-align: center;
-  }
-  .privacy-card .crest {
-    width: 56px; height: 56px; border-radius: 50%; background: var(--forest-soft);
-    display: inline-grid; place-items: center; color: var(--forest); margin-bottom: 18px;
-    font-size: 22px;
-  }
-  .privacy-card h2 { font-size: 38px; }
-  .privacy-card p { max-width: 620px; margin: 14px auto 24px; color: var(--ink-dim); font-size: 17px; line-height: 1.55; }
-  .privacy-card .chips { justify-content: center; }
-
-  /* ---------- Family band ---------- */
-  .family {
-    background: var(--cream-deep);
-    border-top: 1px solid var(--hairline); border-bottom: 1px solid var(--hairline);
-  }
-  .family .inner { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
-  @media (max-width: 800px) { .family .inner { grid-template-columns: 1fr; } }
-  .family h2 { font-size: 36px; }
-  .family .wordmarks { display: flex; flex-direction: column; gap: 12px; font-family: var(--serif); font-weight: 700; font-size: 38px; color: var(--ink); }
-  .family .wordmarks .other { color: var(--ink-faint); }
-
-  /* ---------- Footer ---------- */
-  footer { padding: 48px 0; border-top: 1px solid var(--hairline); font-size: 13px; color: var(--ink-faint); }
-  footer .row { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
-  footer .spacer { flex: 1; }
-  footer a { color: var(--ink-dim); }
-</style>
+<link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 
 <nav class="top">
   <div class="container inner">
-    <a href="#" class="logo"><span class="mark">⛰</span> Kinetopia</a>
+    <a href="/" class="logo"><span class="mark">⛰</span> Kinetopia</a>
     <div class="links">
       <a href="#offline">Offline</a>
       <a href="#subscription">No Subscription</a>
       <a href="#watch">Watch</a>
       <a href="#sports">Sports</a>
-      <a href="#privacy">Privacy</a>
+      <a href="/support.html">Support</a>
     </div>
     <div class="spacer"></div>
     <a href="#get" class="cta">Get the app</a>
@@ -728,19 +373,20 @@
   </div>
 </section>
 
-<!-- ---------- Privacy ---------- -->
+<!-- ---------- Privacy teaser ---------- -->
 <section id="privacy">
   <div class="container">
-    <div class="privacy-card">
+    <div class="content-card" style="text-align: center;">
       <div class="crest">🛡</div>
       <h2>Truly <span class="accent">private.</span></h2>
-      <p>No accounts. No analytics SDKs. No tracking pixels. No Facebook, Mixpanel, Amplitude, Firebase, Segment, Sentry, PostHog. Your workouts never leave this device — unless you explicitly turn on iCloud sync, in which case they sync through <em>your own</em> private iCloud, never a third-party server.</p>
-      <div class="chips">
+      <p style="max-width: 620px; margin: 14px auto 24px; color: var(--ink-dim); font-size: 17px; line-height: 1.55;">No accounts. No analytics SDKs. No tracking pixels. No Facebook, Mixpanel, Amplitude, Firebase, Segment, Sentry, PostHog. Your workouts never leave this device — unless you explicitly turn on iCloud sync, in which case they sync through <em>your own</em> private iCloud, never a third-party server.</p>
+      <div class="chips" style="justify-content: center;">
         <span class="chip">🔒 No accounts</span>
         <span class="chip">📵 No analytics</span>
         <span class="chip">🚫 No tracking SDKs</span>
         <span class="chip">☁️ Your iCloud only</span>
       </div>
+      <p style="margin-top: 24px; font-size: 14px; color: var(--ink-faint);"><a href="/privacy.html">Read the full privacy policy →</a></p>
     </div>
   </div>
 </section>
@@ -784,8 +430,9 @@
       <div>© 2026 Cole Williams. Built quietly, sold once.</div>
       <div class="spacer"></div>
       <a href="https://caltopia.org">Caltopia</a>
-      <a href="#privacy">Privacy</a>
-      <a href="mailto:hi@kinetopia.app">Support</a>
+      <a href="/support.html">Support</a>
+      <a href="/privacy.html">Privacy</a>
+      <a href="mailto:contact@kinetopia.org">Contact</a>
     </div>
   </div>
 </footer>
