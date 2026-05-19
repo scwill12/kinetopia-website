@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Kinetopia — The fitness tracker without the subscription</title>
+<meta name="description" content="Kinetopia is a $14.99 one-time-purchase iOS fitness tracker with an Apple Watch app, 35 sports, two-way Apple Health sync, optional private iCloud sync, and no accounts, no third-party cloud, no subscription. From the maker of Caltopia." />
+<meta name="theme-color" content="#F8F8F3" />
+<meta property="og:title" content="Kinetopia" />
+<meta property="og:description" content="Every feature a fitness tracker should have. None of the subscriptions, accounts, or third-party clouds. $14.99 once. Yours forever." />
+<style>
+  :root {
+    --cream: #F8F8F3;
+    --cream-deep: #F2F1EA;
+    --card: #FFFFFF;
+    --forest: #14502B;
+    --forest-deep: #0C381E;
+    --forest-soft: #DFEAE1;
+    --ink: #1D1F1D;
+    --ink-dim: #66686A;
+    --ink-faint: #9AA09A;
+    --hairline: #E0E1DA;
+    --lavender: #E8E2F8;
+    --lavender-ink: #5C4FA8;
+    --butter: #FAF1D4;
+    --butter-ink: #A68433;
+    --blush: #FAE0E1;
+    --blush-ink: #B25257;
+    --sage: #DDEDD9;
+    --sage-ink: #527F52;
+    --sky: #DCEAF7;
+    --sky-ink: #335EA0;
+    --warn: #DC9933;
+    --danger: #C84545;
+    --serif: ui-serif, "New York", "Iowan Old Style", "Charter", Cambria, Georgia, serif;
+    --ui: -apple-system, BlinkMacSystemFont, "SF Pro Text", Inter, system-ui, sans-serif;
+    --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: var(--ui);
+    font-size: 17px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  ::selection { background: var(--forest-soft); color: var(--forest-deep); }
+  a { color: var(--forest); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .container { max-width: 1140px; margin: 0 auto; padding: 0 24px; }
+
+  /* ---------- Nav ---------- */
+  nav.top {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(248, 248, 243, 0.85);
+    backdrop-filter: saturate(180%) blur(20px);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    border-bottom: 1px solid var(--hairline);
+  }
+  nav.top .inner { display: flex; align-items: center; padding: 14px 0; gap: 28px; }
+  nav.top .logo {
+    display: flex; align-items: center; gap: 9px;
+    font-family: var(--serif); font-weight: 700; font-size: 19px; color: var(--ink);
+  }
+  nav.top .logo .mark {
+    width: 28px; height: 28px; border-radius: 50%; background: var(--forest);
+    display: grid; place-items: center; color: white; font-family: var(--ui);
+  }
+  nav.top .links { display: flex; gap: 22px; margin-left: 8px; }
+  nav.top .links a { color: var(--ink-dim); font-size: 14px; font-weight: 500; }
+  nav.top .spacer { flex: 1; }
+  nav.top .cta {
+    background: var(--forest); color: white; padding: 9px 16px; border-radius: 999px;
+    font-size: 14px; font-weight: 600;
+  }
+  nav.top .cta:hover { background: var(--forest-deep); text-decoration: none; }
+  @media (max-width: 760px) { nav.top .links { display: none; } }
+
+  /* ---------- Hero ---------- */
+  .hero { padding: 56px 0 32px; }
+  .hero .grid { display: grid; grid-template-columns: 1.15fr 1fr; gap: 56px; align-items: center; }
+  @media (max-width: 900px) { .hero .grid { grid-template-columns: 1fr; gap: 32px; } }
+
+  .pill {
+    display: inline-flex; align-items: center; gap: 7px;
+    background: var(--forest-soft); color: var(--forest);
+    padding: 7px 14px; border-radius: 999px;
+    font-size: 13px; font-weight: 600;
+  }
+
+  h1 {
+    font-family: var(--serif); font-weight: 700; color: var(--ink);
+    font-size: clamp(40px, 6vw, 76px); line-height: 1.02; letter-spacing: -0.015em;
+    margin: 18px 0 22px;
+  }
+  h1 .accent { color: var(--forest); font-style: italic; font-weight: 700; }
+
+  .lede { font-size: 19px; color: var(--ink-dim); max-width: 580px; }
+  .lede .strike { color: var(--ink-faint); text-decoration: line-through; margin-right: 4px; }
+
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px; }
+  .chip {
+    display: inline-flex; align-items: center; gap: 7px;
+    background: var(--forest-soft); color: var(--forest);
+    padding: 8px 14px; border-radius: 999px;
+    font-size: 13.5px; font-weight: 600;
+  }
+  .chip svg { flex: none; }
+
+  .cta-row { display: flex; gap: 12px; margin-top: 28px; flex-wrap: wrap; }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 9px;
+    background: var(--forest); color: white;
+    padding: 14px 22px; border-radius: 999px;
+    font-size: 15.5px; font-weight: 600;
+  }
+  .btn-primary:hover { background: var(--forest-deep); text-decoration: none; }
+  .btn-ghost {
+    display: inline-flex; align-items: center; gap: 9px;
+    color: var(--ink); border: 1px solid var(--hairline);
+    background: white;
+    padding: 14px 22px; border-radius: 999px;
+    font-size: 15.5px; font-weight: 600;
+  }
+  .btn-ghost:hover { border-color: var(--forest); color: var(--forest); text-decoration: none; }
+
+  .features-list { color: var(--ink-dim); font-size: 14px; margin-top: 18px; line-height: 1.9; }
+  .features-list span { margin-right: 18px; }
+  .features-list .check { color: var(--forest); margin-right: 6px; }
+
+  /* ---------- Phone mockup ---------- */
+  .phone-wrap { display: flex; justify-content: center; }
+  .phone {
+    width: 320px; aspect-ratio: 360 / 740;
+    background: white;
+    border-radius: 46px;
+    border: 9px solid #1B1F1B;
+    box-shadow: 0 30px 60px -20px rgba(20, 80, 43, 0.15), 0 8px 20px rgba(0,0,0,0.06);
+    position: relative; overflow: hidden;
+  }
+  .phone .notch {
+    position: absolute; top: 12px; left: 50%; transform: translateX(-50%);
+    width: 100px; height: 26px; background: #1B1F1B; border-radius: 999px;
+  }
+  .phone .screen {
+    padding: 50px 22px 70px;
+    background: var(--cream);
+    height: 100%;
+    display: flex; flex-direction: column; gap: 12px;
+  }
+  .phone .h-today {
+    display: flex; justify-content: space-between; align-items: baseline;
+    font-family: var(--serif);
+  }
+  .phone .h-today .title { font-size: 28px; font-weight: 700; color: var(--ink); }
+  .phone .h-today .date { font-size: 14px; color: var(--ink-dim); font-style: italic; font-weight: 500; }
+
+  .phone .ring-card {
+    background: white; border: 1px solid var(--hairline); border-radius: 22px; padding: 16px;
+  }
+  .phone .ring-row { display: flex; align-items: center; gap: 14px; }
+  .ring {
+    width: 78px; height: 78px; flex: none;
+    border-radius: 50%;
+    background:
+      conic-gradient(var(--forest) 0 75%, var(--cream-deep) 75% 100%);
+    display: grid; place-items: center;
+    position: relative;
+  }
+  .ring::after {
+    content: ''; position: absolute; inset: 8px; background: white; border-radius: 50%;
+  }
+  .ring .inner { position: relative; z-index: 1; text-align: center; font-family: var(--serif); }
+  .ring .pct { font-weight: 700; font-size: 16px; color: var(--forest); }
+  .ring .lbl { font-family: var(--ui); font-size: 9px; color: var(--ink-faint); letter-spacing: 0.08em; text-transform: uppercase; margin-top: 2px; }
+
+  .phone .ring-col { display: flex; flex-direction: column; gap: 2px; flex: 1; }
+  .phone .ring-col .small { font-size: 10px; color: var(--ink-faint); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; }
+  .phone .ring-col .big { font-family: var(--serif); font-size: 38px; font-weight: 700; color: var(--ink); line-height: 1; }
+  .phone .ring-col .unit { font-size: 13px; color: var(--ink-dim); margin-left: 4px; font-weight: 600; }
+  .phone .ring-col .sub { font-size: 11px; color: var(--ink-faint); margin-top: 4px; }
+
+  .pillrow { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-top: 10px; }
+  .data-pill { border-radius: 14px; padding: 9px 11px; display: flex; flex-direction: column; gap: 3px; }
+  .data-pill.lavender { background: var(--lavender); color: var(--lavender-ink); }
+  .data-pill.butter { background: var(--butter); color: var(--butter-ink); }
+  .data-pill.blush { background: var(--blush); color: var(--blush-ink); }
+  .data-pill .label { font-size: 9px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.7; }
+  .data-pill .v { font-family: var(--serif); font-size: 16px; font-weight: 700; }
+
+  .activity-card {
+    background: white; border: 1px solid var(--hairline); border-radius: 22px; padding: 14px;
+  }
+  .ac-sec { font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 10px; }
+  .ac-row { display: flex; gap: 12px; align-items: flex-start; padding: 6px 0; }
+  .ac-row + .ac-row { border-top: 1px solid var(--hairline); margin-top: 4px; padding-top: 10px; }
+  .ac-icon { width: 34px; height: 34px; border-radius: 50%; background: var(--forest-soft); display: grid; place-items: center; color: var(--forest); flex: none; font-size: 16px; }
+  .ac-meta { flex: 1; }
+  .ac-meta .t { font-family: var(--serif); font-weight: 600; font-size: 14px; }
+  .ac-meta .d { font-size: 10px; color: var(--ink-faint); }
+  .ac-meta .s { display: flex; gap: 12px; margin-top: 4px; font-size: 11px; }
+  .ac-meta .s .col .v { font-family: var(--serif); font-weight: 600; font-size: 12px; color: var(--ink); }
+  .ac-meta .s .col .l { font-size: 8px; color: var(--ink-faint); letter-spacing: 0.06em; text-transform: uppercase; }
+
+  .tabbar { display: flex; justify-content: space-around; padding-top: 6px; border-top: 1px solid var(--hairline); margin-top: auto; }
+  .tabbar .t { font-size: 10px; color: var(--ink-faint); text-align: center; }
+  .tabbar .t.active { color: var(--forest); }
+  .tabbar .t .ic { font-size: 14px; margin-bottom: 1px; display: block; }
+
+  /* ---------- Sections ---------- */
+  section { padding: 80px 0; }
+  section.tight { padding: 56px 0; }
+  .section-lead { max-width: 720px; }
+  .section-eyebrow { font-size: 13px; font-weight: 600; color: var(--forest); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 14px; }
+  h2 {
+    font-family: var(--serif); font-weight: 700;
+    font-size: clamp(32px, 4vw, 50px); line-height: 1.05; letter-spacing: -0.01em;
+    color: var(--ink); margin: 0 0 18px;
+  }
+  h2 .accent { color: var(--forest); font-style: italic; font-weight: 700; }
+  h3 {
+    font-family: var(--serif); font-weight: 700;
+    font-size: 22px; color: var(--ink); margin: 0 0 8px;
+  }
+  .body { font-size: 17px; color: var(--ink-dim); }
+
+  /* ---------- Description band ---------- */
+  .band {
+    background: var(--cream-deep);
+    border-top: 1px solid var(--hairline); border-bottom: 1px solid var(--hairline);
+  }
+  .band .body-row {
+    display: grid; grid-template-columns: 1fr; max-width: 760px; margin: 0 auto;
+    font-family: var(--serif); font-size: 22px; line-height: 1.45; color: var(--ink); text-align: center;
+    padding: 36px 24px;
+  }
+
+  /* ---------- Compare ---------- */
+  .compare { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 18px; margin-top: 36px; }
+  @media (max-width: 800px) { .compare { grid-template-columns: 1fr; } }
+  .comp-card {
+    background: white; border: 1px solid var(--hairline); border-radius: 20px;
+    padding: 22px;
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .comp-card .name { font-family: var(--serif); font-size: 22px; font-weight: 700; }
+  .comp-card .price { font-family: var(--serif); font-size: 38px; font-weight: 700; }
+  .comp-card .price .small { font-size: 16px; color: var(--ink-dim); font-style: italic; font-weight: 500; }
+  .comp-card .strike { color: var(--ink-faint); text-decoration: line-through; font-size: 18px; font-weight: 600; margin-right: 6px; }
+  .comp-card.them .name, .comp-card.them .price { color: #1F2823; }
+  .comp-card.them { background: var(--cream-deep); }
+  .comp-card.us { background: var(--forest); color: white; }
+  .comp-card.us .name, .comp-card.us .price { color: white; }
+  .comp-card.us .price .small { color: rgba(255,255,255,0.7); }
+  .comp-card.us .strike { color: rgba(255,255,255,0.55); }
+  .comp-card ul { margin: 6px 0 0; padding: 0; list-style: none; font-size: 14px; color: var(--ink-dim); }
+  .comp-card.us ul { color: rgba(255,255,255,0.92); }
+  .comp-card li { padding: 4px 0; display: flex; align-items: center; gap: 8px; }
+  .comp-card li::before { content: '–'; font-weight: 700; color: var(--ink-faint); }
+  .comp-card.us li::before { content: '+'; color: rgba(255,255,255,0.7); }
+  .comp-card .badge {
+    position: absolute; top: 16px; right: 16px;
+    background: var(--warn); color: #2a2200;
+    padding: 4px 10px; border-radius: 999px;
+    font-size: 11px; font-weight: 700; letter-spacing: 0.04em;
+  }
+  .comp-card { position: relative; }
+
+  /* ---------- Features grid ---------- */
+  .feat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px 32px; margin-top: 48px; }
+  @media (max-width: 900px) { .feat-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 600px) { .feat-grid { grid-template-columns: 1fr; } }
+  .feat .icn {
+    width: 38px; height: 38px; border-radius: 12px; background: var(--forest-soft); color: var(--forest);
+    display: grid; place-items: center; margin-bottom: 14px; font-size: 18px;
+  }
+  .feat .title { font-family: var(--serif); font-size: 18px; font-weight: 700; margin-bottom: 6px; color: var(--ink); }
+  .feat .desc { font-size: 14.5px; color: var(--ink-dim); line-height: 1.55; }
+
+  /* ---------- Sports grid ---------- */
+  .sports-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin-top: 36px; }
+  @media (max-width: 800px) { .sports-grid { grid-template-columns: repeat(3, 1fr); } }
+  @media (max-width: 500px) { .sports-grid { grid-template-columns: repeat(2, 1fr); } }
+  .sport-cell {
+    background: white; border: 1px solid var(--hairline); border-radius: 16px;
+    padding: 16px 10px; display: flex; flex-direction: column; align-items: center; gap: 8px;
+    font-size: 13px; font-weight: 600; color: var(--ink);
+  }
+  .sport-cell .badge {
+    width: 38px; height: 38px; border-radius: 50%; background: var(--forest-soft); color: var(--forest);
+    display: grid; place-items: center; font-size: 16px;
+  }
+
+  /* ---------- Watch section ---------- */
+  .watch-row { display: grid; grid-template-columns: 1fr 360px; gap: 56px; align-items: center; }
+  @media (max-width: 900px) { .watch-row { grid-template-columns: 1fr; } }
+  .watch-mock {
+    width: 240px;
+    aspect-ratio: 1 / 1.18;
+    background: #060708;
+    border-radius: 56px;
+    margin: 0 auto;
+    padding: 32px 22px;
+    box-shadow: 0 30px 60px -20px rgba(0,0,0,0.3);
+    color: white;
+    font-family: var(--serif);
+  }
+  .watch-mock .title { font-size: 17px; font-weight: 700; color: #4FB378; margin-bottom: 14px; }
+  .watch-mock .item {
+    background: rgba(255,255,255,0.08); border-radius: 14px;
+    padding: 9px 11px; margin-bottom: 7px;
+    display: flex; align-items: center; gap: 10px; font-family: var(--ui);
+    font-size: 13px; font-weight: 600;
+  }
+  .watch-mock .item .ic { color: #4FB378; }
+  .watch-mock .item .arr { margin-left: auto; color: #4FB378; opacity: 0.8; font-size: 11px; }
+
+  /* ---------- Court sports section ---------- */
+  .court-card {
+    background: white; border: 1px solid var(--hairline); border-radius: 26px;
+    padding: 28px;
+  }
+  .court-row { display: grid; grid-template-columns: 1fr 220px; gap: 32px; align-items: center; }
+  @media (max-width: 700px) { .court-row { grid-template-columns: 1fr; } }
+  .wl-display { display: flex; align-items: baseline; gap: 8px; font-family: var(--serif); }
+  .wl-display .w { font-size: 64px; font-weight: 700; color: var(--forest); }
+  .wl-display .dash { font-size: 44px; color: var(--ink-faint); font-weight: 300; }
+  .wl-display .l { font-size: 64px; font-weight: 700; color: var(--blush-ink); }
+  .wl-sub { color: var(--ink-dim); font-size: 14px; font-weight: 600; margin-top: 4px; }
+  .scoreline { font-family: var(--mono); font-size: 16px; font-weight: 700; color: var(--ink); }
+
+  /* ---------- Privacy section ---------- */
+  .privacy-card {
+    background: white; border: 1px solid var(--hairline); border-radius: 28px;
+    padding: 44px;
+    text-align: center;
+  }
+  .privacy-card .crest {
+    width: 56px; height: 56px; border-radius: 50%; background: var(--forest-soft);
+    display: inline-grid; place-items: center; color: var(--forest); margin-bottom: 18px;
+    font-size: 22px;
+  }
+  .privacy-card h2 { font-size: 38px; }
+  .privacy-card p { max-width: 620px; margin: 14px auto 24px; color: var(--ink-dim); font-size: 17px; line-height: 1.55; }
+  .privacy-card .chips { justify-content: center; }
+
+  /* ---------- Family band ---------- */
+  .family {
+    background: var(--cream-deep);
+    border-top: 1px solid var(--hairline); border-bottom: 1px solid var(--hairline);
+  }
+  .family .inner { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+  @media (max-width: 800px) { .family .inner { grid-template-columns: 1fr; } }
+  .family h2 { font-size: 36px; }
+  .family .wordmarks { display: flex; flex-direction: column; gap: 12px; font-family: var(--serif); font-weight: 700; font-size: 38px; color: var(--ink); }
+  .family .wordmarks .other { color: var(--ink-faint); }
+
+  /* ---------- Footer ---------- */
+  footer { padding: 48px 0; border-top: 1px solid var(--hairline); font-size: 13px; color: var(--ink-faint); }
+  footer .row { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+  footer .spacer { flex: 1; }
+  footer a { color: var(--ink-dim); }
+</style>
+</head>
+<body>
+
+<nav class="top">
+  <div class="container inner">
+    <a href="#" class="logo"><span class="mark">⛰</span> Kinetopia</a>
+    <div class="links">
+      <a href="#offline">Offline</a>
+      <a href="#subscription">No Subscription</a>
+      <a href="#watch">Watch</a>
+      <a href="#sports">Sports</a>
+      <a href="#privacy">Privacy</a>
+    </div>
+    <div class="spacer"></div>
+    <a href="#get" class="cta">Get the app</a>
+  </div>
+</nav>
+
+<!-- ---------- HERO ---------- -->
+<section class="hero">
+  <div class="container">
+    <div class="grid">
+      <div>
+        <span class="pill">✦ Launch week — $9.99 (reg. $14.99)</span>
+        <h1>The fitness tracker <span class="accent">without</span> the subscription.</h1>
+        <p class="lede">
+          <span class="strike">$14.99</span><span style="font-weight:600;color:var(--ink);">$9.99 launch week.</span> No accounts. No third-party cloud. No ads. 35 sports, a full Apple Watch app, two-way Apple Health sync, everything on-device. Nothing — not your route, not your heart rate, not your tennis scores — depends on someone else's server.
+        </p>
+        <div class="chips">
+          <span class="chip">⌚ Apple Watch app</span>
+          <span class="chip">📡 Works offline</span>
+          <span class="chip">🔒 One-time purchase</span>
+          <span class="chip">📤 GPX export</span>
+        </div>
+        <div class="cta-row">
+          <a class="btn-primary" href="#get"> Download on the App Store</a>
+          <a class="btn-ghost" href="#features">See what's inside ↓</a>
+        </div>
+        <div class="features-list">
+          <span><span class="check">✓</span> No subscription</span>
+          <span><span class="check">✓</span> No accounts</span>
+          <span><span class="check">✓</span> 35 sports</span><br>
+          <span><span class="check">✓</span> Apple Watch app</span>
+          <span><span class="check">✓</span> Apple Health two-way sync</span>
+        </div>
+      </div>
+
+      <!-- Phone mockup -->
+      <div class="phone-wrap">
+        <div class="phone" aria-hidden="true">
+          <div class="notch"></div>
+          <div class="screen">
+            <div class="h-today">
+              <div class="title">Today</div>
+              <div class="date">May 19</div>
+            </div>
+            <div class="ring-card">
+              <div class="ring-row">
+                <div class="ring-col">
+                  <div class="small">This week</div>
+                  <div><span class="big">21.4</span><span class="unit">mi</span></div>
+                  <div class="sub">of 32.2 mi goal</div>
+                </div>
+                <div class="ring"><div class="inner"><div class="pct">66%</div><div class="lbl">Week</div></div></div>
+              </div>
+              <div class="pillrow">
+                <div class="data-pill lavender"><div class="label">Time</div><div class="v">3:42:18</div></div>
+                <div class="data-pill butter"><div class="label">Elev</div><div class="v">1,420 ft</div></div>
+                <div class="data-pill blush"><div class="label">Cal</div><div class="v">2,610</div></div>
+              </div>
+            </div>
+
+            <div class="activity-card">
+              <div class="ac-sec">Recent</div>
+              <div class="ac-row">
+                <div class="ac-icon">🏃</div>
+                <div class="ac-meta">
+                  <div class="t">Panhandle loop</div>
+                  <div class="d">Sun · 6:00 AM</div>
+                  <div class="s">
+                    <div class="col"><div class="v">4.0 mi</div><div class="l">Dist</div></div>
+                    <div class="col"><div class="v">30:50</div><div class="l">Time</div></div>
+                    <div class="col"><div class="v">105 ft</div><div class="l">Elev</div></div>
+                  </div>
+                </div>
+              </div>
+              <div class="ac-row">
+                <div class="ac-icon">🎾</div>
+                <div class="ac-meta">
+                  <div class="t">Singles vs. Sam</div>
+                  <div class="d">Sat · 5:30 PM</div>
+                  <div class="s">
+                    <div class="col"><div class="v">2–1</div><div class="l">W-L</div></div>
+                    <div class="col"><div class="v">1:30:00</div><div class="l">Time</div></div>
+                    <div class="col"><div class="v">3</div><div class="l">Played</div></div>
+                  </div>
+                </div>
+              </div>
+              <div class="ac-row">
+                <div class="ac-icon">🚴</div>
+                <div class="ac-meta">
+                  <div class="t">Marin Headlands</div>
+                  <div class="d">Wed · 12:00 PM</div>
+                  <div class="s">
+                    <div class="col"><div class="v">20.2 mi</div><div class="l">Dist</div></div>
+                    <div class="col"><div class="v">1:00:50</div><div class="l">Time</div></div>
+                    <div class="col"><div class="v">604 ft</div><div class="l">Elev</div></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="tabbar">
+              <div class="t active"><span class="ic">◐</span>Today</div>
+              <div class="t"><span class="ic">📋</span>List</div>
+              <div class="t"><span class="ic">⏺</span>Record</div>
+              <div class="t"><span class="ic">📈</span>Progress</div>
+              <div class="t"><span class="ic">👤</span>You</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ---------- Description band ---------- -->
+<div class="band">
+  <div class="container">
+    <div class="body-row">
+      Kinetopia is a $14.99 one-time-purchase iOS fitness tracker with a full Apple Watch app, 35 sports including tennis and pickleball with match scoring, two-way Apple Health sync, optional private iCloud sync, GPX export, and no accounts, no third-party cloud, no subscription. Built by independent developer Cole Williams. Your activities stay where you put them.
+    </div>
+  </div>
+</div>
+
+<!-- ---------- Why Kinetopia / pricing ---------- -->
+<section id="subscription">
+  <div class="container">
+    <div class="section-lead">
+      <div class="section-eyebrow">Why Kinetopia</div>
+      <h2>Sick of $80/year <span class="accent">forever?</span></h2>
+      <p class="body">Every major fitness app charges monthly or yearly — even for the basics. Kinetopia is $14.99, once. Launch week: $9.99. You own it forever. Use it for a year, ten years, never pay again.</p>
+    </div>
+
+    <div class="compare">
+      <div class="comp-card them">
+        <div class="name">Strava Premium</div>
+        <div class="price">$79.99<span class="small">/yr</span></div>
+        <ul>
+          <li>Recurring forever</li>
+          <li>Account required</li>
+          <li>Cloud-based</li>
+          <li>Workouts on their servers</li>
+        </ul>
+      </div>
+      <div class="comp-card them">
+        <div class="name">Garmin Connect+</div>
+        <div class="price">$69.99<span class="small">/yr</span></div>
+        <ul>
+          <li>Recurring forever</li>
+          <li>Account required</li>
+          <li>Requires Garmin hardware</li>
+        </ul>
+      </div>
+      <div class="comp-card us">
+        <span class="badge">LAUNCH WEEK</span>
+        <div class="name">Kinetopia</div>
+        <div class="price"><span class="strike">$14.99</span>$9.99<span class="small"> once</span></div>
+        <ul>
+          <li>One time. Done.</li>
+          <li>All data on-device</li>
+          <li>No account, no tracking</li>
+          <li>Apple Watch app included</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ---------- Features ---------- -->
+<section id="features" style="padding-top: 32px;">
+  <div class="container">
+    <div class="section-lead">
+      <div class="section-eyebrow">Inside</div>
+      <h2>Everything you need. <span class="accent">Nothing you don't.</span></h2>
+      <p class="body">Kinetopia is built for athletes who want their training data to be theirs. No ads, no upsells, no third-party cloud you didn't ask for.</p>
+    </div>
+
+    <div class="feat-grid">
+      <div class="feat">
+        <div class="icn">⌚</div>
+        <div class="title">Apple Watch app</div>
+        <div class="desc">A real workout session on your wrist — live HR, distance, elevation, pace. Pause, resume, finish from the watch. Syncs back to the phone automatically.</div>
+      </div>
+      <div class="feat">
+        <div class="icn">📡</div>
+        <div class="title">35 sports, every kind</div>
+        <div class="desc">Run, ride, hike, swim, lift, ski, surf, sail, kitesurf, ride a motorcycle, skate, scoot — and tennis and pickleball with match-by-match W-L tracking.</div>
+      </div>
+      <div class="feat">
+        <div class="icn">❤️</div>
+        <div class="title">Two-way Apple Health</div>
+        <div class="desc">Workouts you record write to Health with full GPS route as <code>HKWorkoutRoute</code>. Existing Health workouts import in — distance, calories, HR, route — deduped.</div>
+      </div>
+      <div class="feat">
+        <div class="icn">🗺️</div>
+        <div class="title">Maps + splits + elevation</div>
+        <div class="desc">Apple Maps polyline, per-mile splits bar chart, elevation profile, heart-rate chart. Editorial typography. No ads in the data.</div>
+      </div>
+      <div class="feat">
+        <div class="icn">🏆</div>
+        <div class="title">Personal records</div>
+        <div class="desc">Fastest 1K, mile, 5K, 10K, half, marathon per sport — calculated from your GPS trace with rolling-window analysis. Plus longest distance, longest time, most vert.</div>
+      </div>
+      <div class="feat">
+        <div class="icn">🎯</div>
+        <div class="title">Goals + achievements</div>
+        <div class="desc">Weekly, monthly, yearly distance/time/elevation/workout-count goals. 16 unlockable achievements: First Run, Marathon, Century, Vertical Mile, court-sport sweep.</div>
+      </div>
+      <div class="feat">
+        <div class="icn">👟</div>
+        <div class="title">Gear tracking</div>
+        <div class="desc">Shoes, bikes, skis, boards. Auto-mileage and retire-at alerts so you know when it's time. Tracks lifetime totals per item.</div>
+      </div>
+      <div class="feat">
+        <div class="icn">☁️</div>
+        <div class="title">Your iCloud — optional</div>
+        <div class="desc">Off by default. When on, your activities sync across your devices through your own private iCloud. Never our servers. Never a third party.</div>
+      </div>
+      <div class="feat">
+        <div class="icn">📤</div>
+        <div class="title">GPX export</div>
+        <div class="desc">Standards-compliant GPX 1.1 with Garmin HR extension. Your data is yours, in a format every other tool can read.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ---------- Sports grid ---------- -->
+<section id="sports" class="tight" style="background: var(--cream-deep); border-top: 1px solid var(--hairline); border-bottom: 1px solid var(--hairline);">
+  <div class="container">
+    <div class="section-lead">
+      <div class="section-eyebrow">35 sports</div>
+      <h2>For whatever you call <span class="accent">moving.</span></h2>
+      <p class="body">From road running to pickleball doubles, from gravel rides to scuba diving. The same data model, the same privacy guarantees, the same beautiful detail screens. Every sport gets the metrics that matter for that sport — not pace and distance forced onto a tennis match.</p>
+    </div>
+    <div class="sports-grid">
+      <div class="sport-cell"><div class="badge">🏃</div>Run</div>
+      <div class="sport-cell"><div class="badge">🥾</div>Trail Run</div>
+      <div class="sport-cell"><div class="badge">🚶</div>Walk</div>
+      <div class="sport-cell"><div class="badge">⛰</div>Hike</div>
+      <div class="sport-cell"><div class="badge">🚴</div>Ride</div>
+      <div class="sport-cell"><div class="badge">🚵</div>MTB</div>
+      <div class="sport-cell"><div class="badge">🚲</div>Gravel</div>
+      <div class="sport-cell"><div class="badge">🏊</div>Pool Swim</div>
+      <div class="sport-cell"><div class="badge">🌊</div>Open Water</div>
+      <div class="sport-cell"><div class="badge">🎾</div>Tennis</div>
+      <div class="sport-cell"><div class="badge">🏓</div>Pickleball</div>
+      <div class="sport-cell"><div class="badge">🛹</div>Skateboard</div>
+      <div class="sport-cell"><div class="badge">🛴</div>Scooter</div>
+      <div class="sport-cell"><div class="badge">🏍</div>Motorcycle</div>
+      <div class="sport-cell"><div class="badge">🏁</div>Karting</div>
+      <div class="sport-cell"><div class="badge">⛵</div>Sailing</div>
+      <div class="sport-cell"><div class="badge">🪁</div>Kitesurf</div>
+      <div class="sport-cell"><div class="badge">🤿</div>Scuba</div>
+      <div class="sport-cell"><div class="badge">🏂</div>Snowboard</div>
+      <div class="sport-cell"><div class="badge">⛷</div>Ski</div>
+      <div class="sport-cell"><div class="badge">🏋️</div>Strength</div>
+      <div class="sport-cell"><div class="badge">🧘</div>Yoga</div>
+      <div class="sport-cell"><div class="badge">🚣</div>Rowing</div>
+      <div class="sport-cell"><div class="badge">🛶</div>Kayak</div>
+      <div class="sport-cell"><div class="badge">+11</div>more</div>
+    </div>
+  </div>
+</section>
+
+<!-- ---------- Court sports ---------- -->
+<section>
+  <div class="container">
+    <div class="court-card">
+      <div class="court-row">
+        <div>
+          <div class="section-eyebrow">Tennis &amp; Pickleball</div>
+          <h2>Court sports, finally <span class="accent">done right.</span></h2>
+          <p class="body" style="margin-top: 12px;">Other fitness apps track your tennis match by guessing the distance you covered. We track what actually matters: matches played, matches won, sets, scores, and the opponent. Tap to log wins live or fill it in after. Personal records include most matches in a session, longest session, best win rate, and a win streak counter.</p>
+        </div>
+        <div>
+          <div style="text-align: center;">
+            <div style="font-size: 11px; font-weight: 600; letter-spacing: 0.1em; color: var(--ink-faint); text-transform: uppercase;">Match record</div>
+            <div class="wl-display" style="justify-content: center; margin-top: 6px;">
+              <div class="w">8</div>
+              <div class="dash">–</div>
+              <div class="l">3</div>
+            </div>
+            <div class="wl-sub">11 matches · 73% win rate</div>
+            <div style="margin-top: 18px; padding: 10px 14px; border-radius: 12px; background: var(--cream-deep);">
+              <div style="font-size: 10px; font-weight: 600; letter-spacing: 0.1em; color: var(--ink-faint); text-transform: uppercase; margin-bottom: 6px;">Last session</div>
+              <div class="scoreline">6-4, 3-6, 7-5</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ---------- Watch section ---------- -->
+<section id="watch" style="background: var(--cream-deep); border-top: 1px solid var(--hairline); border-bottom: 1px solid var(--hairline);">
+  <div class="container">
+    <div class="watch-row">
+      <div>
+        <div class="section-eyebrow">Apple Watch</div>
+        <h2>Record straight from <span class="accent">your wrist.</span></h2>
+        <p class="body" style="margin-top: 12px;">A real Apple Watch workout session — uses <code>HKWorkoutSession</code> and <code>HKLiveWorkoutBuilder</code>, so heart rate, distance, and calories are exactly as accurate as Apple's built-in Workout app. Two-page live UI: big duration up top, detailed metrics one swipe away. Pause, resume, finish from the wrist. The completed workout flies back to your phone automatically when you're back in range.</p>
+        <ul style="margin-top: 18px; padding-left: 0; list-style: none; color: var(--ink-dim); font-size: 14.5px; line-height: 1.9;">
+          <li>✦ Live heart rate from the watch sensor</li>
+          <li>✦ GPS samples buffered on-watch — works without your phone</li>
+          <li>✦ All 25 watch-compatible sports including tennis, pickleball, water sports</li>
+          <li>✦ Writes to Apple Health on save</li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="watch-mock">
+          <div class="title">Kinetopia</div>
+          <div class="item"><span class="ic">🏃</span> Run <span class="arr">▶</span></div>
+          <div class="item"><span class="ic">🥾</span> Trail Run <span class="arr">▶</span></div>
+          <div class="item"><span class="ic">🚴</span> Ride <span class="arr">▶</span></div>
+          <div class="item"><span class="ic">🎾</span> Tennis <span class="arr">▶</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ---------- Offline ---------- -->
+<section id="offline">
+  <div class="container">
+    <div class="section-lead">
+      <div class="section-eyebrow">Offline-first</div>
+      <h2>Works without a <span class="accent">signal.</span></h2>
+      <p class="body">Logging a workout on a flight, in the mountains, in a basement gym? Kinetopia just works. Most competitors silently degrade when offline — you can't see your history, your map won't load, your splits don't render. Kinetopia is the same in airplane mode as it is on LTE.</p>
+    </div>
+
+    <div class="feat-grid" style="margin-top: 32px;">
+      <div class="feat">
+        <div class="icn">📵</div>
+        <div class="title">Zero network calls</div>
+        <div class="desc">Search the binary for HTTP. You won't find it. The app does not contain any networking code that talks to a server we own — because no such server exists.</div>
+      </div>
+      <div class="feat">
+        <div class="icn">🗺️</div>
+        <div class="title">Maps cache as you go</div>
+        <div class="desc">Apple Maps caches tiles you've already viewed. Your familiar routes will render offline; new ground needs a signal once to populate.</div>
+      </div>
+      <div class="feat">
+        <div class="icn">🎯</div>
+        <div class="title">All charts, all PRs, offline</div>
+        <div class="desc">Splits, elevation, heart-rate, weekly distance heatmap, personal records, achievements, goal progress — all computed locally from your data.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ---------- Privacy ---------- -->
+<section id="privacy">
+  <div class="container">
+    <div class="privacy-card">
+      <div class="crest">🛡</div>
+      <h2>Truly <span class="accent">private.</span></h2>
+      <p>No accounts. No analytics SDKs. No tracking pixels. No Facebook, Mixpanel, Amplitude, Firebase, Segment, Sentry, PostHog. Your workouts never leave this device — unless you explicitly turn on iCloud sync, in which case they sync through <em>your own</em> private iCloud, never a third-party server.</p>
+      <div class="chips">
+        <span class="chip">🔒 No accounts</span>
+        <span class="chip">📵 No analytics</span>
+        <span class="chip">🚫 No tracking SDKs</span>
+        <span class="chip">☁️ Your iCloud only</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ---------- Family / Caltopia universe ---------- -->
+<div class="family">
+  <div class="container">
+    <section class="tight">
+      <div class="inner">
+        <div>
+          <div class="section-eyebrow">From the maker of Caltopia</div>
+          <h2>Two apps. One studio. <span class="accent">One promise.</span></h2>
+          <p class="body" style="margin-top: 12px;">Caltopia tracks what you eat. Kinetopia tracks what you do. Both are one-time-purchase, both run on-device, both speak directly to Apple Health so they share your weight and energy without ever forming a single account between them. Buy them separately, or get the bundle.</p>
+          <div class="cta-row" style="margin-top: 22px;">
+            <a class="btn-primary" href="#get">Get Kinetopia — $9.99</a>
+            <a class="btn-ghost" href="https://caltopia.org">Visit Caltopia →</a>
+          </div>
+        </div>
+        <div class="wordmarks">
+          <div class="other">caltopia</div>
+          <div>kinetopia</div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<!-- ---------- Final CTA ---------- -->
+<section id="get" style="text-align: center;">
+  <div class="container">
+    <span class="pill">✦ Launch week — $9.99</span>
+    <h2 style="margin-top: 16px;">$14.99. Once. <span class="accent">Yours forever.</span></h2>
+    <p class="body" style="max-width: 540px; margin: 12px auto 28px;">No trial period. No subscription waiting in the wings. You buy it, you own it. Use it for a year, ten years, forever — never pay again.</p>
+    <a class="btn-primary" href="#" style="font-size: 16px; padding: 16px 28px;"> Download on the App Store</a>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="row">
+      <div>© 2026 Cole Williams. Built quietly, sold once.</div>
+      <div class="spacer"></div>
+      <a href="https://caltopia.org">Caltopia</a>
+      <a href="#privacy">Privacy</a>
+      <a href="mailto:hi@kinetopia.app">Support</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
