@@ -5,9 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
 
-<title>Kinetopia — The Offline Fitness Tracker Without the Subscription · $14.99 Once</title>
-<meta name="description" content="Kinetopia is a private, offline iOS fitness tracker with an Apple Watch app, 35 sports including tennis and pickleball, two-way Apple Health sync, and no accounts, no third-party cloud, no subscription. $14.99 once. Yours forever." />
-<meta name="keywords" content="offline fitness tracker, no subscription fitness app, private fitness app, one-time purchase fitness app, no tracking fitness app, Strava alternative, iPhone fitness tracker, Apple Watch fitness app, tennis tracker app, pickleball tracker app, fitness app no account" />
+<title>Kinetopia — Offline Fitness Tracker · Excel Export · No Subscription · $14.99 Once</title>
+<meta name="description" content="Kinetopia is a private, offline iOS fitness tracker with an Apple Watch app, 35 sports including tennis and pickleball, two-way Apple Health sync, and full Excel export and import. No accounts, no third-party cloud, no subscription. $14.99 once. Yours forever." />
+<meta name="keywords" content="offline fitness tracker, no subscription fitness app, private fitness app, one-time purchase fitness app, no tracking fitness app, Strava alternative, iPhone fitness tracker, Apple Watch fitness app, tennis tracker app, pickleball tracker app, fitness app no account, Excel export fitness app, spreadsheet workout export, export workouts to Excel, XLSX fitness export, fitness data backup spreadsheet, workout log spreadsheet" />
 <meta name="author" content="Cole Williams" />
 <link rel="canonical" href="https://kinetopia.org/" />
 
@@ -67,6 +67,7 @@
     "Gear tracking with retirement mileage alerts",
     "Goals: weekly, monthly, yearly",
     "GPX export with Garmin HR extension",
+    "Excel (XLSX) export and import — 8 sheets, deduped on re-import",
     "Works fully offline",
     "No accounts, no analytics, no third-party cloud"
   ],
@@ -196,6 +197,22 @@
         "@type": "Answer",
         "text": "Yes — Caltopia, by the same developer. Caltopia is a one-time-purchase iOS calorie tracker with the same on-device, no-account, no-third-party-cloud philosophy. The two apps speak through Apple Health, so your workout burn shows up in Caltopia and your weight shows up in Kinetopia, without either app knowing about the other directly."
       }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I export my workouts to Excel?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. One tap exports everything to an .xlsx workbook with eight sheets: Activities, Splits, Routes, Gear, Goals, Personal Records, Achievements, and Profile. The file opens in Excel, Numbers, or Google Sheets. There is no vendor lock-in — your data is a spreadsheet anyone can read."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I re-import an Excel file from a previous export?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Re-import the same workbook on a new device — or after a fresh install — and Kinetopia rebuilds everything from it. Duplicates are detected by stable UUID and skipped automatically, so the same file can be imported multiple times safely."
+      }
     }
   ]
 }
@@ -215,7 +232,7 @@
       <a href="#offline">Offline</a>
       <a href="#subscription">No Subscription</a>
       <a href="#watch">Watch</a>
-      <a href="#sports">Sports</a>
+      <a href="#excel">Excel</a>
       <a href="/caltopia">Caltopia</a>
       <a href="/support">Support</a>
     </div>
@@ -242,6 +259,7 @@
           <span class="chip">🔒 One-time purchase</span>
           <span class="chip">🛡 No tracking</span>
           <span class="chip">📤 GPX export</span>
+          <span class="chip">📊 Excel export</span>
         </div>
         <div class="cta-row">
           <a class="btn-coming-soon" href="mailto:contact@kinetopia.org?subject=Notify%20me%20when%20Kinetopia%20launches"> App Store <span class="badge">Coming soon</span></a>
@@ -471,6 +489,11 @@
         <div class="title">GPX export, open format</div>
         <div class="desc">Standards-compliant GPX 1.1 with Garmin HR extension. Your data is yours, in a format every other tool can read.</div>
       </div>
+      <div class="feat">
+        <div class="icn">📊</div>
+        <div class="title">Excel export &amp; import</div>
+        <div class="desc">One-tap .xlsx export with eight sheets covering every activity, split, route, gear, goal, record, and achievement. Re-import the same file on a new device — duplicates auto-skipped.</div>
+      </div>
     </div>
   </div>
 </section>
@@ -601,6 +624,60 @@
   </div>
 </section>
 
+<!-- ---------- Excel export & import ---------- -->
+<section id="excel" style="background: var(--cream-deep); border-top: 1px solid var(--hairline); border-bottom: 1px solid var(--hairline);">
+  <div class="container">
+    <div class="excel-row">
+      <div>
+        <div class="section-eyebrow">Excel export &amp; import</div>
+        <h2>Your data, <span class="accent">your spreadsheet.</span></h2>
+        <p class="body" style="margin-top: 12px;">Tap once to export everything as an Excel workbook — eight sheets covering every activity, split, route, gear item, goal, personal record, achievement, and your profile. Re-import the same file on a new device later to seed Kinetopia from scratch. Duplicates are detected by stable UUID and skipped automatically — the same workbook can be imported multiple times safely.</p>
+        <ul style="margin-top: 18px; padding-left: 0; list-style: none; color: var(--ink-dim); font-size: 14.5px; line-height: 1.9;">
+          <li>✦ <strong>Eight sheets, every data type</strong> — Activities, Splits, Routes, Gear, Goals, Personal Records, Achievements, Profile.</li>
+          <li>✦ <strong>Re-import to seed a new device</strong> — duplicates auto-skipped; partial files welcome.</li>
+          <li>✦ <strong>No vendor lock-in, ever</strong> — your data is an .xlsx file. Open it in Excel, Numbers, Google Sheets, Files, or any spreadsheet tool. You are never trapped.</li>
+          <li>✦ <strong>Same architecture as <a href="/caltopia">Caltopia</a></strong> — both apps export to the same Excel format so you can keep one canonical archive of your training and your meals.</li>
+        </ul>
+      </div>
+
+      <!-- Spreadsheet mockup -->
+      <div class="sheet-mock" aria-hidden="true">
+        <div class="menubar">
+          <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+          <span class="doc">Kinetopia-export-2026-05-19.xlsx</span>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th></th>
+              <th>A</th><th>B</th><th>C</th><th>D</th><th>E</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td class="row-head">1</td><th>startedAt</th><th>sport</th><th>distance</th><th>moving</th><th>elev</th></tr>
+            <tr><td class="row-head">2</td><td>2026-05-18 06:00</td><td>run</td><td>6,437</td><td>1850</td><td>32</td></tr>
+            <tr><td class="row-head">3</td><td>2026-05-17 17:30</td><td>tennis</td><td>0</td><td>5400</td><td>0</td></tr>
+            <tr><td class="row-head">4</td><td>2026-05-16 09:01</td><td>trailRun</td><td>11,200</td><td>4200</td><td>412</td></tr>
+            <tr><td class="row-head">5</td><td>2026-05-15 12:02</td><td>ride</td><td>32,500</td><td>3650</td><td>184</td></tr>
+            <tr><td class="row-head">6</td><td>2026-05-13 06:48</td><td>pickleball</td><td>0</td><td>3600</td><td>0</td></tr>
+            <tr><td class="row-head">7</td><td>2026-05-11 15:00</td><td>hike</td><td>7,400</td><td>5400</td><td>620</td></tr>
+          </tbody>
+        </table>
+        <div class="sheet-tabs">
+          <div class="tab active">Activities</div>
+          <div class="tab">Splits</div>
+          <div class="tab">Routes</div>
+          <div class="tab">Gear</div>
+          <div class="tab">Goals</div>
+          <div class="tab">Records</div>
+          <div class="tab">Achievements</div>
+          <div class="tab">Profile</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ---------- Privacy ---------- -->
 <section id="privacy">
   <div class="container">
@@ -656,6 +733,11 @@
     <div class="faq-item">
       <h3>Is there a sibling app for tracking food?</h3>
       <p>Yes — <a href="/caltopia">Caltopia</a>, by the same developer. Same one-time-purchase philosophy, same on-device privacy posture, same indie sensibility. The two apps speak through Apple Health, so your workout burn shows up in Caltopia and your weight shows up in Kinetopia — without either app knowing about the other directly.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>Can I export my workouts to Excel?</h3>
+      <p>Yes. One tap exports everything to an .xlsx workbook with eight sheets — Activities, Splits, Routes, Gear, Goals, Personal Records, Achievements, Profile. Opens in Excel, Numbers, or Google Sheets. Re-import the same file on a new device and duplicates are skipped automatically. <a href="#excel">See the export →</a></p>
     </div>
 
     <p style="margin-top: 28px; text-align: center;"><a href="/support" class="btn-ghost" style="text-decoration: none;">See all support questions →</a></p>

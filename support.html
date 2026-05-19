@@ -5,9 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
 
-<title>Kinetopia Support · FAQ for the Offline Fitness Tracker · Help &amp; Contact</title>
-<meta name="description" content="Help, FAQ, and contact for Kinetopia — the one-time-purchase iOS fitness tracker. Answers about Apple Watch, Apple Health, iCloud sync, tennis and pickleball tracking, GPX export, and troubleshooting." />
-<meta name="keywords" content="Kinetopia support, Kinetopia FAQ, offline fitness tracker help, no subscription fitness app help, Apple Watch fitness app, Apple Health sync, GPX export, tennis tracker support, pickleball tracker support" />
+<title>Kinetopia Support · FAQ for the Offline Fitness Tracker · Excel Export · Help</title>
+<meta name="description" content="Help, FAQ, and contact for Kinetopia — the one-time-purchase iOS fitness tracker. Answers about Apple Watch, Apple Health, iCloud sync, tennis and pickleball tracking, GPX export, Excel export and import, and troubleshooting." />
+<meta name="keywords" content="Kinetopia support, Kinetopia FAQ, offline fitness tracker help, no subscription fitness app help, Apple Watch fitness app, Apple Health sync, GPX export, Excel export fitness app, XLSX fitness import, tennis tracker support, pickleball tracker support" />
 <meta name="author" content="Cole Williams" />
 <link rel="canonical" href="https://kinetopia.org/support" />
 
@@ -138,8 +138,18 @@
     },
     {
       "@type": "Question",
-      "name": "How do I export my data?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Open any activity, tap the menu in the top-right, choose Export GPX. The file follows the GPX 1.1 spec with the Garmin TrackPointExtension for heart rate. Every other fitness tool can read it." }
+      "name": "How do I export my data to Excel?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Go to You → Settings → Excel export & import → Export .xlsx. Kinetopia builds an Excel workbook with eight sheets — Activities, Splits, Routes, Gear, Goals, Personal Records, Achievements, Profile — and opens the share sheet so you can save it to Files, send it via Mail, or drop it into iCloud Drive. The file opens in Excel, Numbers, or Google Sheets." }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I import an Excel file?",
+      "acceptedAnswer": { "@type": "Answer", "text": "You → Settings → Excel export & import → Import. Pick the .xlsx workbook. Kinetopia parses every sheet, dedupes by stable UUID, and inserts only what's missing. You can re-import the same file as many times as you want — duplicates are skipped automatically. After import, personal records and achievements are recomputed." }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I export a single activity to GPX?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Open the activity, tap the menu in the top-right, choose Export GPX. The file follows the GPX 1.1 spec with the Garmin TrackPointExtension for heart rate. Every other fitness tool can read it. Use Excel export for the full archive and GPX for individual route shares." }
     },
     {
       "@type": "Question",
@@ -308,13 +318,39 @@
     <h2>Data &amp; exports</h2>
 
     <div class="faq-item">
-      <h3>How do I export my data?</h3>
-      <p>Open any activity, tap the <strong>⋯</strong> menu in the top-right, choose <strong>Export GPX</strong>. The file follows the GPX 1.1 spec with the Garmin TrackPointExtension for heart rate. Every other fitness tool can read it.</p>
+      <h3>How do I export my workouts to Excel?</h3>
+      <p>Go to <strong>You → Settings → Excel export &amp; import → Export .xlsx</strong>. Kinetopia builds an Excel workbook with eight sheets — Activities, Splits, Routes, Gear, Goals, Personal Records, Achievements, Profile — and opens the share sheet so you can save it to Files, send it via Mail, or drop it into iCloud Drive. The file opens in Excel, Numbers, or Google Sheets. There is no proprietary format and no vendor lock-in.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>How do I import an Excel file from a previous export?</h3>
+      <p><strong>You → Settings → Excel export &amp; import → Import</strong>. Pick the .xlsx workbook in the file picker. Kinetopia parses every sheet, deduplicates by stable UUID, and inserts only what's missing. You can re-import the same file as many times as you want — duplicates are skipped automatically. After import, personal records and achievements are recomputed.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>What's in the Excel workbook?</h3>
+      <p>Eight sheets, one for each data type:</p>
+      <ul>
+        <li><strong>Activities</strong> — every workout you've ever recorded, with all fields (sport, duration, distance, elevation, HR, calories, RPE, feeling, notes, source, match scores for court sports).</li>
+        <li><strong>Splits</strong> — per-mile or per-km splits, linked to their activity by UUID.</li>
+        <li><strong>Routes</strong> — saved routes with names, distances, and a compact polyline.</li>
+        <li><strong>Gear</strong> — shoes, bikes, and other gear with brand, type, purchase date, retirement mileage.</li>
+        <li><strong>Goals</strong> — weekly, monthly, and yearly goals.</li>
+        <li><strong>Personal Records</strong> — every PR per sport.</li>
+        <li><strong>Achievements</strong> — every badge you've unlocked.</li>
+        <li><strong>Profile</strong> — name, weight, height, heart-rate targets, weekly distance target.</li>
+      </ul>
+      <p>The detailed GPS route points are intentionally excluded (they'd inflate the file with hundreds of thousands of rows for an active user). Use the per-activity GPX export when you need the route trace.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>How do I export a single activity to GPX?</h3>
+      <p>Open the activity, tap the <strong>⋯</strong> menu in the top-right, choose <strong>Export GPX</strong>. The file follows the GPX 1.1 spec with the Garmin TrackPointExtension for heart rate. Every other fitness tool can read it. Use Excel export for the full archive and GPX for individual route shares.</p>
     </div>
 
     <div class="faq-item">
       <h3>Can I import workouts from another app?</h3>
-      <p>The cleanest path is through Apple Health: connect Health, and any workouts already in your Health database (recorded by Strava, Apple Fitness, Nike Run Club, Garmin, anything that writes to Health) will be imported on next sync. Direct GPX import isn't yet supported.</p>
+      <p>The cleanest path is through Apple Health: connect Health, and any workouts already in your Health database (recorded by Strava, Apple Fitness, Nike Run Club, Garmin, anything that writes to Health) will be imported on next sync. Excel import works for Kinetopia's own export format. Direct GPX import isn't yet supported.</p>
     </div>
 
     <div class="faq-item">
